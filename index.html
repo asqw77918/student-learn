@@ -32,13 +32,12 @@
           <span id="voice-toggle-icon">🔊</span>
           <span id="voice-toggle-text">语音开</span>
         </button>
-        <button id="parent-toggle" class="parent-toggle" type="button">家长视图</button>
         <button id="install-btn" class="install-btn" type="button" hidden>安装</button>
       </div>
     </header>
 
     <main class="page">
-      <section class="hero-card">
+      <section id="intro-card" class="hero-card">
         <div>
           <p class="eyebrow">3-7岁幼小衔接</p>
           <h1>每天30分钟，轻松准备入学</h1>
@@ -49,12 +48,21 @@
           <span>选一选</span>
           <span>说一说</span>
         </div>
+        <button id="intro-dismiss" class="intro-dismiss" type="button">开始学习</button>
       </section>
 
       <section class="workspace">
         <aside class="module-panel">
           <h2>学习板块</h2>
           <nav id="module-list" class="module-list" aria-label="学习板块"></nav>
+
+          <button id="achievement-toggle" class="achievement-widget" type="button" aria-label="打开家长视图">
+            <span class="ring" id="task-ring">
+              <span id="ring-percent">0%</span>
+            </span>
+            <strong>今日任务</strong>
+            <em id="ring-stars">⭐ 0 颗星</em>
+          </button>
         </aside>
 
         <section id="learn-view" class="learn-view">
@@ -93,21 +101,57 @@
           </article>
         </section>
 
-        <aside id="parent-view" class="parent-view">
-          <h2>家长视图</h2>
+      </section>
+
+      <section id="parent-modal" class="parent-modal" hidden>
+        <div class="parent-backdrop" id="parent-backdrop"></div>
+        <aside id="parent-view" class="parent-view parent-card-modal" role="dialog" aria-modal="true" aria-label="家长视图">
+          <div class="parent-head">
+            <div>
+              <p class="eyebrow">家长视图</p>
+              <h2>星星奖励中心</h2>
+            </div>
+            <button id="parent-close" class="close-btn" type="button" aria-label="关闭家长视图">×</button>
+          </div>
+
           <div class="parent-stats">
-            <div><strong id="progress-stars">0</strong><span>星星</span></div>
+            <div><strong id="progress-stars">0</strong><span>可用星星</span></div>
             <div><strong id="progress-correct">0</strong><span>正确</span></div>
             <div><strong id="progress-wrong">0</strong><span>需再练</span></div>
             <div><strong id="progress-time">00:00</strong><span>时长</span></div>
           </div>
-          <div class="parent-note">
-            <h3>陪伴建议</h3>
-            <p>每次学习控制在30分钟内。答错时先听语音提示，再让孩子重新观察图片和选项，不急着替孩子说出答案。</p>
-          </div>
+
           <div class="parent-note">
             <h3>当前表现</h3>
             <p id="parent-summary">还没有答题记录，先从孩子感兴趣的板块开始。</p>
+          </div>
+
+          <div class="exchange-panel">
+            <h3>星星兑换</h3>
+            <div class="exchange-list">
+              <button class="exchange-item" type="button" data-cost="5" data-reward="10分钟亲子绘本时间">
+                <strong>亲子绘本</strong><span>5 颗星</span>
+              </button>
+              <button class="exchange-item" type="button" data-cost="8" data-reward="选择一个周末小游戏">
+                <strong>周末小游戏</strong><span>8 颗星</span>
+              </button>
+              <button class="exchange-item" type="button" data-cost="12" data-reward="一次小小奖励贴纸">
+                <strong>奖励贴纸</strong><span>12 颗星</span>
+              </button>
+            </div>
+            <p id="exchange-message" class="exchange-message">答对题目可以获得星星，攒够后在这里兑换。</p>
+          </div>
+
+          <div class="parent-note">
+            <h3>兑换日志</h3>
+            <ul id="exchange-log" class="exchange-log">
+              <li>暂无兑换记录</li>
+            </ul>
+          </div>
+
+          <div class="parent-note">
+            <h3>陪伴建议</h3>
+            <p>每次学习控制在30分钟内。答错时先听语音提示，再让孩子重新观察图片和选项，不急着替孩子说出答案。</p>
           </div>
         </aside>
       </section>

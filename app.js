@@ -15,12 +15,14 @@ var studyTimer = null;
 var deferredInstallPrompt = null;
 
 var STORAGE_KEY = 'qimeng_planet_subject_progress_v1';
+var INTRO_SEEN_KEY = 'qimeng_planet_intro_seen_v1';
 var progress = {
   stars: 0,
   correct: 0,
   wrong: 0,
   studyTime: 0,
-  answered: {}
+  answered: {},
+  exchangeLog: []
 };
 
 var moduleIconMap = {
@@ -39,6 +41,8 @@ function $(id) {
 }
 
 function bindElements() {
+  el.introCard = $('intro-card');
+  el.introDismiss = $('intro-dismiss');
   el.moduleList = $('module-list');
   el.moduleKicker = $('module-kicker');
   el.moduleTitle = $('module-title');
@@ -60,7 +64,13 @@ function bindElements() {
   el.voiceToggle = $('voice-toggle');
   el.voiceToggleIcon = $('voice-toggle-icon');
   el.voiceToggleText = $('voice-toggle-text');
-  el.parentToggle = $('parent-toggle');
+  el.achievementToggle = $('achievement-toggle');
+  el.taskRing = $('task-ring');
+  el.ringPercent = $('ring-percent');
+  el.ringStars = $('ring-stars');
+  el.parentModal = $('parent-modal');
+  el.parentBackdrop = $('parent-backdrop');
+  el.parentClose = $('parent-close');
   el.parentView = $('parent-view');
   el.installBtn = $('install-btn');
   el.progressStars = $('progress-stars');
@@ -68,6 +78,8 @@ function bindElements() {
   el.progressWrong = $('progress-wrong');
   el.progressTime = $('progress-time');
   el.parentSummary = $('parent-summary');
+  el.exchangeMessage = $('exchange-message');
+  el.exchangeLog = $('exchange-log');
 }
 
 function readProgress() {
@@ -80,6 +92,7 @@ function readProgress() {
     progress.wrong = saved.wrong || 0;
     progress.studyTime = saved.studyTime || 0;
     progress.answered = saved.answered || {};
+    progress.exchangeLog = Array.isArray(saved.exchangeLog) ? saved.exchangeLog : [];
   } catch (error) {
     console.warn('读取进度失败：', error);
   }
@@ -98,6 +111,8 @@ function updateParentStats() {
   if (el.progressCorrect) el.progressCorrect.textContent = progress.correct;
   if (el.progressWrong) el.progressWrong.textContent = progress.wrong;
   if (el.progressTime) el.progressTime.textContent = formatTime(progress.studyTime);
+  updateAchievementRing();
+  renderExchangeLog();
   if (el.parentSummary) {
     if (progress.correct + progress.wrong === 0) {
       el.parentSummary.textContent = '还没有答题记录，先从孩子感兴趣的板块开始。';
@@ -105,6 +120,37 @@ function updateParentStats() {
       el.parentSummary.textContent = '已完成 ' + (progress.correct + progress.wrong) + ' 次答题，答对 ' + progress.correct + ' 次。';
     }
   }
+}
+
+function updateAchievementRing() {
+  var total = getTotalQuestionCount();
+  var finished = Object.keys(progress.answered || {}).length;
+  var percent = total > 0 ? Math.min(100, Math.round((finished / total) * 100)) : 0;
+  if (el.taskRing) el.taskRing.style.setProperty('--progress', Math.round(percent * 3.6) + 'deg');
+  if (el.ringPercent) el.ringPercent.textContent = percent + '%';
+  if (el.ringStars) el.ringStars.textContent = '⭐ ' + progress.stars + ' 颗星';
+}
+
+function getTotalQuestionCount() {
+  return getModules().reduce(function(total, module) {
+    return total + getQuestions(module).length;
+  }, 0);
+}
+
+function renderExchangeLog() {
+  if (!el.exchangeLog) return;
+  el.exchangeLog.innerHTML = '';
+  if (!progress.exchangeLog || progress.exchangeLog.length === 0) {
+    var empty = document.createElement('li');
+    empty.textContent = '暂无兑换记录';
+    el.exchangeLog.appendChild(empty);
+    return;
+  }
+  progress.exchangeLog.slice().reverse().forEach(function(item) {
+    var li = document.createElement('li');
+    li.textContent = item.time + ' 兑换「' + item.reward + '」，消耗 ' + item.cost + ' 颗星';
+    el.exchangeLog.appendChild(li);
+  });
 }
 
 function formatTime(seconds) {
@@ -369,9 +415,9 @@ function markCorrect() {
   var key = answerKey();
   if (!progress.answered[key]) {
     progress.answered[key] = true;
-    progress.correct += 1;
-    progress.stars += 1;
   }
+  progress.correct += 1;
+  progress.stars += 1;
   saveProgress();
   updateParentStats();
 }
@@ -424,6 +470,8 @@ async function loadContent() {
 }
 
 function bindEvents() {
+  initIntroCard();
+
   if (el.voiceSelect) {
     el.voiceSelect.addEventListener('change', function() {
       var index = Number(el.voiceSelect.value);
@@ -463,12 +511,72 @@ function bindEvents() {
   if (el.prevQuestionBtn) el.prevQuestionBtn.addEventListener('click', prevQuestion);
   if (el.nextQuestionBtn) el.nextQuestionBtn.addEventListener('click', nextQuestion);
 
-  if (el.parentToggle && el.parentView) {
-    el.parentToggle.addEventListener('click', function() {
-      el.parentView.classList.toggle('open');
-      el.parentToggle.textContent = el.parentView.classList.contains('open') ? '收起家长视图' : '家长视图';
+  if (el.achievementToggle) el.achievementToggle.addEventListener('click', openParentModal);
+  if (el.parentClose) el.parentClose.addEventListener('click', closeParentModal);
+  if (el.parentBackdrop) el.parentBackdrop.addEventListener('click', closeParentModal);
+
+  Array.prototype.slice.call(document.querySelectorAll('.exchange-item')).forEach(function(button) {
+    button.addEventListener('click', function() {
+      redeemReward(button);
+    });
+  });
+}
+
+function initIntroCard() {
+  var hasSeen = localStorage.getItem(INTRO_SEEN_KEY) === '1';
+  if (hasSeen && el.introCard) {
+    el.introCard.classList.add('dismissed');
+  }
+  if (el.introDismiss) {
+    el.introDismiss.addEventListener('click', function() {
+      localStorage.setItem(INTRO_SEEN_KEY, '1');
+      if (el.introCard) el.introCard.classList.add('dismissed');
     });
   }
+}
+
+function openParentModal() {
+  updateParentStats();
+  if (el.parentModal) el.parentModal.hidden = false;
+}
+
+function closeParentModal() {
+  if (el.parentModal) el.parentModal.hidden = true;
+}
+
+function redeemReward(button) {
+  var cost = Number(button.getAttribute('data-cost') || 0);
+  var reward = button.getAttribute('data-reward') || '星星奖励';
+  if (progress.stars < cost) {
+    if (el.exchangeMessage) {
+      el.exchangeMessage.textContent = '星星还不够，继续学习再来兑换吧。';
+      el.exchangeMessage.className = 'exchange-message warn';
+    }
+    speak('星星还不够，继续学习再来兑换吧。', 'zh-CN');
+    return;
+  }
+
+  progress.stars -= cost;
+  progress.exchangeLog.push({
+    reward: reward,
+    cost: cost,
+    time: formatDateTime(new Date())
+  });
+  saveProgress();
+  updateParentStats();
+  if (el.exchangeMessage) {
+    el.exchangeMessage.textContent = '兑换成功：' + reward + '。';
+    el.exchangeMessage.className = 'exchange-message success';
+  }
+  speak('兑换成功，' + reward + '。', 'zh-CN');
+}
+
+function formatDateTime(date) {
+  var month = String(date.getMonth() + 1).padStart(2, '0');
+  var day = String(date.getDate()).padStart(2, '0');
+  var hour = String(date.getHours()).padStart(2, '0');
+  var minute = String(date.getMinutes()).padStart(2, '0');
+  return month + '-' + day + ' ' + hour + ':' + minute;
 }
 
 function initPWA() {
