@@ -1,0 +1,47 @@
+{
+  "name": "启蒙星球 - 幼小衔接学习平台",
+  "short_name": "启蒙星球",
+  "description": "每天30分钟，轻松准备入学。覆盖语文启蒙、拼音学习、数学基础、逻辑思维、英语启蒙、表达与阅读。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f2ff",
+  "theme_color": "#7c5cff",
+  "lang": "zh-CN",
+  "categories": ["education", "kids"],
+  "icons": [
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "开始今日学习",
+      "short_name": "学习",
+      "description": "进入启蒙星球继续今天的学习。",
+      "url": "./index.html"
+    }
+  ]
+}

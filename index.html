@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#7c5cff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="启蒙星球" />
+  <meta name="description" content="启蒙星球：每天30分钟，轻松准备入学" />
+  <title>启蒙星球 | 每天30分钟，轻松准备入学</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="./assets/icon.svg" alt="启蒙星球" class="brand-icon" />
+        <div>
+          <strong>启蒙星球</strong>
+          <span>每天30分钟，轻松准备入学</span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <select id="voice-select" class="voice-select" aria-label="选择语音">
+          <option value="">选择语音</option>
+        </select>
+        <button id="voice-toggle" class="voice-toggle active" type="button" aria-label="语音开关">
+          <span id="voice-toggle-icon">🔊</span>
+          <span id="voice-toggle-text">语音开</span>
+        </button>
+        <button id="parent-toggle" class="parent-toggle" type="button">家长视图</button>
+        <button id="install-btn" class="install-btn" type="button" hidden>安装</button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="hero-card">
+        <div>
+          <p class="eyebrow">3-7岁幼小衔接</p>
+          <h1>每天30分钟，轻松准备入学</h1>
+          <p>按语文、拼音、数学、逻辑、英语、表达阅读的学科特点设计任务，不再套用统一层级。</p>
+        </div>
+        <div class="hero-mini">
+          <span>听一听</span>
+          <span>选一选</span>
+          <span>说一说</span>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="module-panel">
+          <h2>学习板块</h2>
+          <nav id="module-list" class="module-list" aria-label="学习板块"></nav>
+        </aside>
+
+        <section id="learn-view" class="learn-view">
+          <div class="module-summary">
+            <div>
+              <p id="module-kicker" class="eyebrow">语文启蒙</p>
+              <h2 id="module-title">语文启蒙</h2>
+              <p id="module-desc">通过图片、声音和互动卡片理解汉字和词语。</p>
+            </div>
+            <button id="speak-module-btn" class="soft-btn" type="button">朗读介绍</button>
+          </div>
+
+          <div id="topic-chips" class="topic-chips"></div>
+
+          <article id="question-card" class="question-card">
+            <div class="question-top">
+              <span id="question-count" class="question-count">1 / 1</span>
+              <button id="speak-question-btn" class="speak-btn" type="button" aria-label="朗读题目">🔊</button>
+            </div>
+
+            <div class="question-visual">
+              <span id="visual-emoji">🌟</span>
+              <strong id="visual-text">准备开始</strong>
+            </div>
+
+            <h3 id="question-title">题目</h3>
+            <p id="question-prompt">请选择正确答案。</p>
+
+            <div id="option-list" class="option-list"></div>
+            <p id="feedback" class="feedback" aria-live="polite"></p>
+
+            <div class="question-actions">
+              <button id="prev-question-btn" class="ghost-btn" type="button">上一题</button>
+              <button id="next-question-btn" class="ghost-btn" type="button">下一题</button>
+            </div>
+          </article>
+        </section>
+
+        <aside id="parent-view" class="parent-view">
+          <h2>家长视图</h2>
+          <div class="parent-stats">
+            <div><strong id="progress-stars">0</strong><span>星星</span></div>
+            <div><strong id="progress-correct">0</strong><span>正确</span></div>
+            <div><strong id="progress-wrong">0</strong><span>需再练</span></div>
+            <div><strong id="progress-time">00:00</strong><span>时长</span></div>
+          </div>
+          <div class="parent-note">
+            <h3>陪伴建议</h3>
+            <p>每次学习控制在30分钟内。答错时先听语音提示，再让孩子重新观察图片和选项，不急着替孩子说出答案。</p>
+          </div>
+          <div class="parent-note">
+            <h3>当前表现</h3>
+            <p id="parent-summary">还没有答题记录，先从孩子感兴趣的板块开始。</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

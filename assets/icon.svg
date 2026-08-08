@@ -1,0 +1,28 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="84" y1="40" x2="444" y2="472" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9F7AFF"/>
+      <stop offset="1" stop-color="#5B3FD7"/>
+    </linearGradient>
+    <linearGradient id="planet" x1="156" y1="142" x2="356" y2="358" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8D7"/>
+      <stop offset="1" stop-color="#FFC83D"/>
+    </linearGradient>
+    <filter id="softShadow" x="40" y="38" width="432" height="444" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#352070" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect x="34" y="34" width="444" height="444" rx="118" fill="url(#bg)"/>
+  <g filter="url(#softShadow)">
+    <path d="M122 292C94 278 83 258 92 239C103 214 146 204 202 213C217 174 253 148 293 154C341 162 374 211 367 263C421 278 451 303 443 328C432 361 370 366 302 342C255 386 189 388 153 349C138 333 128 314 122 292Z" fill="white" fill-opacity="0.95"/>
+    <circle cx="256" cy="256" r="112" fill="url(#planet)"/>
+    <path d="M256 176L279 224L332 232L294 270L303 324L256 298L209 324L218 270L180 232L233 224L256 176Z" fill="#7C5CFF"/>
+    <path d="M129 250C153 218 226 210 306 230C374 247 424 278 438 309" stroke="#7C5CFF" stroke-width="22" stroke-linecap="round" opacity="0.65"/>
+    <path d="M108 260C145 303 227 337 317 340C368 342 408 333 430 315" stroke="#FFC83D" stroke-width="18" stroke-linecap="round"/>
+  </g>
+  <circle cx="135" cy="132" r="18" fill="#FFC83D"/>
+  <circle cx="395" cy="142" r="12" fill="#EDE9FE"/>
+  <circle cx="382" cy="396" r="16" fill="#EDE9FE"/>
+  <path d="M166 402H346" stroke="white" stroke-opacity="0.88" stroke-width="22" stroke-linecap="round"/>
+  <path d="M194 434H318" stroke="white" stroke-opacity="0.58" stroke-width="14" stroke-linecap="round"/>
+</svg>

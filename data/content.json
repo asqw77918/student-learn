@@ -1,0 +1,365 @@
+{
+  "version": "3.0.0",
+  "appName": "启蒙星球",
+  "tagline": "每天30分钟，轻松准备入学",
+  "modules": [
+    {
+      "id": "chinese",
+      "name": "语文启蒙",
+      "icon": "icon-chinese.jpg",
+      "color": "#ff6b9d",
+      "description": "包含识字、词语搭配、看图说话、简单句表达等内容，通过图片、声音和互动卡片帮助孩子理解汉字和词语。",
+      "topics": ["识字", "词语搭配", "看图说话", "简单句表达"],
+      "questions": [
+        {
+          "topic": "识字",
+          "title": "认识汉字：日",
+          "visualEmoji": "☀️",
+          "visualText": "太阳出来了",
+          "prompt": "图里有太阳，哪个字表示太阳？",
+          "options": ["日", "月", "水", "山"],
+          "answer": "日",
+          "tts": "请看图片，太阳出来了。哪个字表示太阳？",
+          "success": "答对了，日就是太阳的意思。",
+          "hint": "再看看图，圆圆亮亮的是太阳，太阳对应的字是日。"
+        },
+        {
+          "topic": "词语搭配",
+          "title": "词语朋友：小鸟",
+          "visualEmoji": "🐦",
+          "visualText": "小鸟在天空飞",
+          "prompt": "哪个词可以和“小鸟”搭配？",
+          "options": ["飞翔", "游泳", "开车", "睡觉"],
+          "answer": "飞翔",
+          "tts": "小鸟在天空中做什么？请选择合适的词语。",
+          "success": "很好，小鸟会飞翔。",
+          "hint": "小鸟有翅膀，会在天空中飞。"
+        },
+        {
+          "topic": "看图说话",
+          "title": "谁在吃苹果",
+          "visualEmoji": "👧🍎",
+          "visualText": "女孩拿着苹果",
+          "prompt": "哪句话最符合图片？",
+          "options": ["女孩在吃苹果", "小狗在游泳", "太阳在下雨", "书包在唱歌"],
+          "answer": "女孩在吃苹果",
+          "tts": "请观察图片，女孩手里拿着苹果。哪句话最合适？",
+          "success": "说得真清楚，女孩在吃苹果。",
+          "hint": "先看人物，再看她手里的东西。"
+        },
+        {
+          "topic": "简单句表达",
+          "title": "把话说完整",
+          "visualEmoji": "🐱🧶",
+          "visualText": "小猫玩毛线球",
+          "prompt": "选择一个完整的句子。",
+          "options": ["小猫在玩毛线球", "小猫", "毛线球", "在玩"],
+          "answer": "小猫在玩毛线球",
+          "tts": "请把图里的事情说成一句完整的话。",
+          "success": "很棒，这就是完整句子。",
+          "hint": "完整句子要说清楚谁在做什么。"
+        }
+      ]
+    },
+    {
+      "id": "pinyin",
+      "name": "拼音学习",
+      "icon": "icon-pinyin.jpg",
+      "color": "#7c5cff",
+      "description": "覆盖声母、韵母、整体认读音节、拼读练习和发音跟读，让孩子通过听音辨认、拼音配对和跟读逐步掌握基础拼读能力。",
+      "topics": ["声母", "韵母", "整体认读", "拼读练习", "发音跟读"],
+      "questions": [
+        {
+          "topic": "声母",
+          "title": "听音辨认：b",
+          "visualEmoji": "🎧",
+          "visualText": "听一听，找声母",
+          "prompt": "下面哪个是声母 b？",
+          "options": ["b", "a", "ei", "ang"],
+          "answer": "b",
+          "tts": "请听，b，b，b。下面哪个是声母 b？",
+          "success": "正确，b 是声母。",
+          "hint": "声母 b 像一个竖起来的小广播。"
+        },
+        {
+          "topic": "韵母",
+          "title": "找出单韵母",
+          "visualEmoji": "🗣️",
+          "visualText": "a o e",
+          "prompt": "哪个是单韵母？",
+          "options": ["a", "zh", "b", "sh"],
+          "answer": "a",
+          "tts": "请找出单韵母。a，o，e，都是单韵母。",
+          "success": "答对了，a 是单韵母。",
+          "hint": "单韵母一般可以响亮地单独发音。"
+        },
+        {
+          "topic": "整体认读",
+          "title": "整体认读音节",
+          "visualEmoji": "🌕",
+          "visualText": "zhi chi shi",
+          "prompt": "哪个是整体认读音节？",
+          "options": ["zhi", "ba", "ma", "fo"],
+          "answer": "zhi",
+          "tts": "整体认读音节不用拼，直接读。请选出整体认读音节。",
+          "success": "正确，zhi 是整体认读音节。",
+          "hint": "整体认读音节要整体读出来，不拆开拼。"
+        },
+        {
+          "topic": "拼读练习",
+          "title": "声母加韵母",
+          "visualEmoji": "🧩",
+          "visualText": "b + a = ?",
+          "prompt": "b 和 a 拼在一起读什么？",
+          "options": ["ba", "bo", "bi", "bu"],
+          "answer": "ba",
+          "tts": "b 和 a 拼在一起，b，a，ba。",
+          "success": "拼得对，b 加 a 读 ba。",
+          "hint": "先读声母 b，再连上韵母 a。"
+        }
+      ]
+    },
+    {
+      "id": "math",
+      "name": "数学基础",
+      "icon": "icon-math.jpg",
+      "color": "#4d9cff",
+      "description": "包含数字认知、数量比较、加减法入门、图形认知、规律排序等内容，通过生活化场景和小游戏帮助孩子建立数感。",
+      "topics": ["数字认知", "数量比较", "加减法", "图形认知", "规律排序"],
+      "questions": [
+        {
+          "topic": "数字认知",
+          "title": "数一数苹果",
+          "visualEmoji": "🍎🍎🍎",
+          "visualText": "有几个苹果？",
+          "prompt": "图里一共有几个苹果？",
+          "options": ["2", "3", "4", "5"],
+          "answer": "3",
+          "tts": "请数一数，图里一共有几个苹果？",
+          "success": "答对了，一共有三个苹果。",
+          "hint": "可以一个一个数：一，二，三。"
+        },
+        {
+          "topic": "数量比较",
+          "title": "哪边更多",
+          "visualEmoji": "🐟🐟🐟  🐟",
+          "visualText": "比较数量",
+          "prompt": "哪一边的小鱼更多？",
+          "options": ["左边", "右边", "一样多", "不知道"],
+          "answer": "左边",
+          "tts": "左边有三条小鱼，右边有一条小鱼。哪边更多？",
+          "success": "正确，左边更多。",
+          "hint": "先数左边，再数右边，数量大的更多。"
+        },
+        {
+          "topic": "加减法",
+          "title": "生活加法",
+          "visualEmoji": "🍓🍓 + 🍓",
+          "visualText": "2 + 1 = ?",
+          "prompt": "两个草莓再加一个草莓，一共有几个？",
+          "options": ["2", "3", "4", "5"],
+          "answer": "3",
+          "tts": "两个草莓，再加一个草莓，一共有几个？",
+          "success": "对了，二加一等于三。",
+          "hint": "从二开始，再往后数一个，就是三。"
+        },
+        {
+          "topic": "图形认知",
+          "title": "认识三角形",
+          "visualEmoji": "🔺",
+          "visualText": "三条边，三个角",
+          "prompt": "这个图形叫什么？",
+          "options": ["三角形", "圆形", "正方形", "长方形"],
+          "answer": "三角形",
+          "tts": "它有三条边，三个角。这个图形叫什么？",
+          "success": "正确，这是三角形。",
+          "hint": "三条边的图形叫三角形。"
+        }
+      ]
+    },
+    {
+      "id": "logic",
+      "name": "逻辑思维",
+      "icon": "icon-logic.jpg",
+      "color": "#a855f7",
+      "description": "设计找规律、分类、空间想象、图形推理、迷宫路径等训练，提升孩子观察、判断和解决问题的能力。",
+      "topics": ["找规律", "分类", "空间想象", "图形推理", "迷宫路径"],
+      "questions": [
+        {
+          "topic": "找规律",
+          "title": "颜色规律",
+          "visualEmoji": "🔴🔵🔴🔵🔴",
+          "visualText": "下一个是什么？",
+          "prompt": "红、蓝、红、蓝、红，接下来应该是什么颜色？",
+          "options": ["蓝", "红", "黄", "绿"],
+          "answer": "蓝",
+          "tts": "请观察规律，红，蓝，红，蓝，红，下一个是什么？",
+          "success": "答对了，红蓝交替，接下来是蓝。",
+          "hint": "它们是一个红，一个蓝，轮流出现。"
+        },
+        {
+          "topic": "分类",
+          "title": "找同类",
+          "visualEmoji": "🍎🍌🚗🍇",
+          "visualText": "哪些是水果？",
+          "prompt": "下面哪个不是水果？",
+          "options": ["苹果", "香蕉", "汽车", "葡萄"],
+          "answer": "汽车",
+          "tts": "苹果、香蕉、葡萄是水果。哪个不是水果？",
+          "success": "正确，汽车不是水果。",
+          "hint": "水果可以吃，汽车是交通工具。"
+        },
+        {
+          "topic": "空间想象",
+          "title": "积木在上面",
+          "visualEmoji": "🟦⬆️🟨",
+          "visualText": "看位置",
+          "prompt": "蓝色积木在黄色积木的哪里？",
+          "options": ["上面", "下面", "里面", "后面"],
+          "answer": "上面",
+          "tts": "请看位置，蓝色积木在黄色积木的哪里？",
+          "success": "对了，蓝色积木在上面。",
+          "hint": "看箭头方向，上面在高处。"
+        },
+        {
+          "topic": "迷宫路径",
+          "title": "小兔回家",
+          "visualEmoji": "🐰➡️🏠",
+          "visualText": "帮小兔找路",
+          "prompt": "小兔要回家，应该往哪里走？",
+          "options": ["往右", "往左", "往下", "停下"],
+          "answer": "往右",
+          "tts": "小兔的家在右边，小兔应该往哪里走？",
+          "success": "很好，小兔往右走就能回家。",
+          "hint": "房子在右边，所以要往右走。"
+        }
+      ]
+    },
+    {
+      "id": "english",
+      "name": "英语启蒙",
+      "icon": "icon-english.jpg",
+      "color": "#27c976",
+      "description": "包含字母认知、常见单词、简单句型、自然拼读入门和听力磨耳朵内容，通过图文、音频和互动练习培养英语兴趣。",
+      "topics": ["字母认知", "常见单词", "简单句型", "自然拼读", "听力磨耳朵"],
+      "questions": [
+        {
+          "topic": "字母认知",
+          "title": "Letter A",
+          "visualEmoji": "🍎",
+          "visualText": "A for apple",
+          "prompt": "Apple 是以哪个字母开头？",
+          "options": ["A", "B", "C", "D"],
+          "answer": "A",
+          "lang": "en-US",
+          "tts": "A for apple. Which letter starts the word apple?",
+          "success": "Great! Apple starts with A.",
+          "hint": "Listen again. A, apple."
+        },
+        {
+          "topic": "常见单词",
+          "title": "颜色单词",
+          "visualEmoji": "🔴",
+          "visualText": "red",
+          "prompt": "红色的英文是什么？",
+          "options": ["red", "blue", "green", "yellow"],
+          "answer": "red",
+          "lang": "en-US",
+          "tts": "Red means 红色. Which word means 红色?",
+          "success": "Yes, red means 红色.",
+          "hint": "The color is red. Try red."
+        },
+        {
+          "topic": "简单句型",
+          "title": "I like apples",
+          "visualEmoji": "😊🍎",
+          "visualText": "I like apples.",
+          "prompt": "“我喜欢苹果”可以怎么说？",
+          "options": ["I like apples.", "I am a cat.", "Good night.", "This is blue."],
+          "answer": "I like apples.",
+          "lang": "en-US",
+          "tts": "I like apples means 我喜欢苹果.",
+          "success": "Good job! I like apples.",
+          "hint": "Like 表示喜欢，apples 是苹果。"
+        },
+        {
+          "topic": "自然拼读",
+          "title": "b says /b/",
+          "visualEmoji": "⚽",
+          "visualText": "b - ball",
+          "prompt": "ball 的开头发音接近哪个字母？",
+          "options": ["b", "m", "s", "t"],
+          "answer": "b",
+          "lang": "en-US",
+          "tts": "B says buh, ball. Which letter starts ball?",
+          "success": "Correct. Ball starts with b.",
+          "hint": "Ball, ball, begins with b."
+        }
+      ]
+    },
+    {
+      "id": "reading",
+      "name": "表达与阅读",
+      "icon": "icon-science.jpg",
+      "color": "#ff9f43",
+      "description": "提供绘本故事、看图讲述、情景问答和简单复述任务，帮助孩子提升语言表达和阅读理解能力。",
+      "topics": ["绘本故事", "看图讲述", "情景问答", "简单复述"],
+      "questions": [
+        {
+          "topic": "绘本故事",
+          "title": "小熊找朋友",
+          "visualEmoji": "🐻🤝🐰",
+          "visualText": "小熊遇见小兔",
+          "prompt": "小熊遇见小兔时，应该先说什么？",
+          "options": ["你好", "再见", "不要", "下雨"],
+          "answer": "你好",
+          "tts": "小熊遇见小兔，应该先有礼貌地打招呼。",
+          "success": "对了，见到朋友可以说你好。",
+          "hint": "遇见朋友时，先打招呼。"
+        },
+        {
+          "topic": "看图讲述",
+          "title": "公园里",
+          "visualEmoji": "👦🛝🌳",
+          "visualText": "小朋友在公园玩",
+          "prompt": "哪句话能讲清楚图片？",
+          "options": ["小朋友在公园玩", "小鱼在天上飞", "月亮吃苹果", "书包在跑步"],
+          "answer": "小朋友在公园玩",
+          "tts": "请看图片，小朋友在哪里？他在做什么？",
+          "success": "很好，这句话讲清楚了地点和事情。",
+          "hint": "先说谁，再说在哪里做什么。"
+        },
+        {
+          "topic": "情景问答",
+          "title": "想喝水怎么办",
+          "visualEmoji": "🥤",
+          "visualText": "我想喝水",
+          "prompt": "如果你想喝水，可以怎么说？",
+          "options": ["我想喝水", "我会飞", "这是大象", "天黑了"],
+          "answer": "我想喝水",
+          "tts": "如果想喝水，可以清楚地说，我想喝水。",
+          "success": "表达得很清楚。",
+          "hint": "把自己的需要说出来。"
+        },
+        {
+          "topic": "简单复述",
+          "title": "复述小故事",
+          "visualEmoji": "🌧️🐸☀️",
+          "visualText": "下雨后，青蛙出来了",
+          "prompt": "下面哪句话最像故事复述？",
+          "options": ["下雨后，青蛙出来唱歌", "苹果是红色", "我有三支笔", "小车很快"],
+          "answer": "下雨后，青蛙出来唱歌",
+          "tts": "请把故事主要内容说出来：下雨后，青蛙出来了。",
+          "success": "复述得不错，说出了时间和事情。",
+          "hint": "复述要说出故事里发生了什么。"
+        }
+      ]
+    }
+  ],
+  "ttsConfig": {
+    "preferredZh": "Microsoft Huihui",
+    "preferredEn": "Microsoft Jenny",
+    "rate": 0.9,
+    "pitch": 1
+  }
+}
