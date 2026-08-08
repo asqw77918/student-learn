@@ -129,17 +129,29 @@
           <div class="exchange-panel">
             <h3>星星兑换</h3>
             <div class="exchange-list">
-              <button class="exchange-item" type="button" data-cost="5" data-reward="10分钟亲子绘本时间">
-                <strong>亲子绘本</strong><span>5 颗星</span>
+              <button class="exchange-item" type="button" data-reward="周末游戏">
+                <strong>周末游戏</strong><span>输入星星数兑换</span>
               </button>
-              <button class="exchange-item" type="button" data-cost="8" data-reward="选择一个周末小游戏">
-                <strong>周末小游戏</strong><span>8 颗星</span>
+              <button class="exchange-item" type="button" data-reward="可乐饮品">
+                <strong>可乐饮品</strong><span>输入星星数兑换</span>
               </button>
-              <button class="exchange-item" type="button" data-cost="12" data-reward="一次小小奖励贴纸">
-                <strong>奖励贴纸</strong><span>12 颗星</span>
+              <button class="exchange-item" type="button" data-reward="盲盒玩具">
+                <strong>盲盒玩具</strong><span>输入星星数兑换</span>
               </button>
             </div>
+            <div class="custom-exchange">
+              <input id="custom-reward" type="text" maxlength="24" placeholder="自定义兑换项目，例如：一次讲故事" />
+              <input id="custom-cost" type="number" min="1" step="1" placeholder="星星数" />
+              <button id="custom-exchange-btn" class="soft-btn" type="button">兑换</button>
+            </div>
             <p id="exchange-message" class="exchange-message">答对题目可以获得星星，攒够后在这里兑换。</p>
+          </div>
+
+          <div class="parent-note">
+            <h3>错题库</h3>
+            <ul id="wrong-bank" class="wrong-bank">
+              <li>暂无错题记录</li>
+            </ul>
           </div>
 
           <div class="parent-note">

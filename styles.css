@@ -673,6 +673,30 @@ img {
   font-weight: 900;
 }
 
+.custom-exchange {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(92px, 0.6fr) auto;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.custom-exchange input {
+  min-height: 42px;
+  min-width: 0;
+  padding: 0 12px;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  color: var(--text);
+  font: inherit;
+  font-weight: 800;
+  outline: none;
+  background: #fff;
+}
+
+.custom-exchange input:focus {
+  border-color: rgba(124, 92, 255, 0.55);
+}
+
 .exchange-message {
   margin-top: 10px;
   color: var(--muted);
@@ -703,6 +727,32 @@ img {
   color: var(--muted);
   background: #f8f5ff;
   line-height: 1.5;
+}
+
+.wrong-bank {
+  display: grid;
+  gap: 8px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.wrong-bank li {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  color: var(--muted);
+  background: #fff4f5;
+  line-height: 1.5;
+}
+
+.wrong-bank strong {
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.wrong-bank span {
+  font-size: 0.86rem;
 }
 
 [hidden] {
@@ -750,7 +800,8 @@ img {
 
   .option-list,
   .parent-stats,
-  .exchange-list {
+  .exchange-list,
+  .custom-exchange {
     grid-template-columns: 1fr;
   }
 

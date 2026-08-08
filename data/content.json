@@ -1,15 +1,26 @@
 {
-  "version": "3.0.0",
+  "version": "3.2.0",
   "appName": "启蒙星球",
   "tagline": "每天30分钟，轻松准备入学",
+  "dailyTarget": 8,
+  "curriculumNote": "内容按幼小衔接和小学低年级基础要求扩展，覆盖识字、拼音、数感、逻辑、英语分级词汇与阅读表达。",
   "modules": [
     {
       "id": "chinese",
       "name": "语文启蒙",
       "icon": "icon-chinese.jpg",
       "color": "#ff6b9d",
-      "description": "包含识字、词语搭配、看图说话、简单句表达等内容，通过图片、声音和互动卡片帮助孩子理解汉字和词语。",
-      "topics": ["识字", "词语搭配", "看图说话", "简单句表达"],
+      "description": "围绕小学低年级识字、词语理解、句子表达和看图说话要求，帮助孩子从认字走向理解和表达。",
+      "topics": [
+        "识字",
+        "词语搭配",
+        "看图说话",
+        "量词",
+        "反义词",
+        "简单句表达",
+        "标点感知",
+        "阅读理解"
+      ],
       "questions": [
         {
           "topic": "识字",
@@ -17,7 +28,12 @@
           "visualEmoji": "☀️",
           "visualText": "太阳出来了",
           "prompt": "图里有太阳，哪个字表示太阳？",
-          "options": ["日", "月", "水", "山"],
+          "options": [
+            "日",
+            "月",
+            "水",
+            "山"
+          ],
           "answer": "日",
           "tts": "请看图片，太阳出来了。哪个字表示太阳？",
           "success": "答对了，日就是太阳的意思。",
@@ -29,7 +45,12 @@
           "visualEmoji": "🐦",
           "visualText": "小鸟在天空飞",
           "prompt": "哪个词可以和“小鸟”搭配？",
-          "options": ["飞翔", "游泳", "开车", "睡觉"],
+          "options": [
+            "飞翔",
+            "游泳",
+            "开车",
+            "睡觉"
+          ],
           "answer": "飞翔",
           "tts": "小鸟在天空中做什么？请选择合适的词语。",
           "success": "很好，小鸟会飞翔。",
@@ -41,7 +62,12 @@
           "visualEmoji": "👧🍎",
           "visualText": "女孩拿着苹果",
           "prompt": "哪句话最符合图片？",
-          "options": ["女孩在吃苹果", "小狗在游泳", "太阳在下雨", "书包在唱歌"],
+          "options": [
+            "女孩在吃苹果",
+            "小狗在游泳",
+            "太阳在下雨",
+            "书包在唱歌"
+          ],
           "answer": "女孩在吃苹果",
           "tts": "请观察图片，女孩手里拿着苹果。哪句话最合适？",
           "success": "说得真清楚，女孩在吃苹果。",
@@ -53,11 +79,152 @@
           "visualEmoji": "🐱🧶",
           "visualText": "小猫玩毛线球",
           "prompt": "选择一个完整的句子。",
-          "options": ["小猫在玩毛线球", "小猫", "毛线球", "在玩"],
+          "options": [
+            "小猫在玩毛线球",
+            "小猫",
+            "毛线球",
+            "在玩"
+          ],
           "answer": "小猫在玩毛线球",
           "tts": "请把图里的事情说成一句完整的话。",
           "success": "很棒，这就是完整句子。",
           "hint": "完整句子要说清楚谁在做什么。"
+        },
+        {
+          "topic": "量词",
+          "title": "一什么书",
+          "visualEmoji": "📘",
+          "visualText": "一本书",
+          "prompt": "“书”常用哪个量词？",
+          "options": [
+            "本",
+            "只",
+            "条",
+            "朵"
+          ],
+          "answer": "本",
+          "tts": "一本书。请选出书的量词。",
+          "success": "正确，我们常说一本书。",
+          "hint": "书可以翻页阅读，常说一本书。"
+        },
+        {
+          "topic": "反义词",
+          "title": "大的反义词",
+          "visualEmoji": "🐘🐭",
+          "visualText": "大象和小老鼠",
+          "prompt": "“大”的反义词是什么？",
+          "options": [
+            "小",
+            "高",
+            "长",
+            "快"
+          ],
+          "answer": "小",
+          "tts": "大和小是一组反义词。请选择答案。",
+          "success": "答对了，大的反义词是小。",
+          "hint": "看看大象和小老鼠，一个大，一个小。"
+        },
+        {
+          "topic": "标点感知",
+          "title": "问一句话",
+          "visualEmoji": "❓",
+          "visualText": "你去哪儿？",
+          "prompt": "表示疑问的句子最后用什么标点？",
+          "options": [
+            "？",
+            "。",
+            "，",
+            "！"
+          ],
+          "answer": "？",
+          "tts": "表示提问时，句子最后用问号。",
+          "success": "很好，疑问句用问号。",
+          "hint": "如果是在问别人问题，就用问号。"
+        },
+        {
+          "topic": "阅读理解",
+          "title": "小兔采蘑菇",
+          "visualEmoji": "🐰🍄",
+          "visualText": "小兔采了三个蘑菇",
+          "prompt": "小兔采了什么？",
+          "options": [
+            "蘑菇",
+            "苹果",
+            "小鱼",
+            "铅笔"
+          ],
+          "answer": "蘑菇",
+          "tts": "小兔采了三个蘑菇。小兔采了什么？",
+          "success": "对，小兔采了蘑菇。",
+          "hint": "题目里说小兔采了三个蘑菇。"
+        },
+        {
+          "topic": "识字",
+          "title": "认识汉字：林",
+          "visualEmoji": "🌳🌳",
+          "visualText": "两棵树在一起",
+          "prompt": "两个“木”合在一起是什么字？",
+          "options": [
+            "林",
+            "森",
+            "本",
+            "禾"
+          ],
+          "answer": "林",
+          "tts": "两个木在一起，可以组成林。",
+          "success": "答对了，两个木是林。",
+          "hint": "一棵是木，两棵靠近就是林。"
+        },
+        {
+          "topic": "词语理解",
+          "title": "选择动作词",
+          "visualEmoji": "🏃",
+          "visualText": "男孩在跑步",
+          "prompt": "“跑步”表示什么？",
+          "options": [
+            "动作",
+            "颜色",
+            "味道",
+            "数量"
+          ],
+          "answer": "动作",
+          "tts": "跑步是一种动作。请选择正确答案。",
+          "success": "对，跑步表示动作。",
+          "hint": "能做出来的事情通常是动作。"
+        },
+        {
+          "topic": "句子排序",
+          "title": "排一句话",
+          "visualEmoji": "🐶🏠",
+          "visualText": "小狗回家",
+          "prompt": "哪句话顺序正确？",
+          "options": [
+            "小狗回家了",
+            "回家小狗了",
+            "了小狗回家",
+            "家回小狗了"
+          ],
+          "answer": "小狗回家了",
+          "tts": "请选出通顺的一句话。",
+          "success": "读起来很通顺，小狗回家了。",
+          "hint": "一句话要先说谁，再说做什么。"
+        },
+        {
+          "topic": "阅读理解",
+          "title": "谁在叫",
+          "visualEmoji": "🐓🌅",
+          "visualText": "公鸡早上叫",
+          "prompt": "早上叫醒大家的是谁？",
+          "options": [
+            "公鸡",
+            "小鱼",
+            "月亮",
+            "书包"
+          ],
+          "answer": "公鸡",
+          "tts": "公鸡早上叫，叫醒大家。是谁在叫？",
+          "success": "正确，是公鸡。",
+          "hint": "早晨常常是公鸡打鸣。"
         }
       ]
     },
@@ -66,8 +233,17 @@
       "name": "拼音学习",
       "icon": "icon-pinyin.jpg",
       "color": "#7c5cff",
-      "description": "覆盖声母、韵母、整体认读音节、拼读练习和发音跟读，让孩子通过听音辨认、拼音配对和跟读逐步掌握基础拼读能力。",
-      "topics": ["声母", "韵母", "整体认读", "拼读练习", "发音跟读"],
+      "description": "覆盖声母、韵母、整体认读、声调和拼读，贴合小学一年级拼音学习顺序。",
+      "topics": [
+        "声母",
+        "韵母",
+        "整体认读",
+        "声调",
+        "两拼音节",
+        "三拼音节",
+        "轻声",
+        "发音辨析"
+      ],
       "questions": [
         {
           "topic": "声母",
@@ -75,7 +251,12 @@
           "visualEmoji": "🎧",
           "visualText": "听一听，找声母",
           "prompt": "下面哪个是声母 b？",
-          "options": ["b", "a", "ei", "ang"],
+          "options": [
+            "b",
+            "a",
+            "ei",
+            "ang"
+          ],
           "answer": "b",
           "tts": "请听，b，b，b。下面哪个是声母 b？",
           "success": "正确，b 是声母。",
@@ -87,7 +268,12 @@
           "visualEmoji": "🗣️",
           "visualText": "a o e",
           "prompt": "哪个是单韵母？",
-          "options": ["a", "zh", "b", "sh"],
+          "options": [
+            "a",
+            "zh",
+            "b",
+            "sh"
+          ],
           "answer": "a",
           "tts": "请找出单韵母。a，o，e，都是单韵母。",
           "success": "答对了，a 是单韵母。",
@@ -99,7 +285,12 @@
           "visualEmoji": "🌕",
           "visualText": "zhi chi shi",
           "prompt": "哪个是整体认读音节？",
-          "options": ["zhi", "ba", "ma", "fo"],
+          "options": [
+            "zhi",
+            "ba",
+            "ma",
+            "fo"
+          ],
           "answer": "zhi",
           "tts": "整体认读音节不用拼，直接读。请选出整体认读音节。",
           "success": "正确，zhi 是整体认读音节。",
@@ -111,11 +302,152 @@
           "visualEmoji": "🧩",
           "visualText": "b + a = ?",
           "prompt": "b 和 a 拼在一起读什么？",
-          "options": ["ba", "bo", "bi", "bu"],
+          "options": [
+            "ba",
+            "bo",
+            "bi",
+            "bu"
+          ],
           "answer": "ba",
           "tts": "b 和 a 拼在一起，b，a，ba。",
           "success": "拼得对，b 加 a 读 ba。",
           "hint": "先读声母 b，再连上韵母 a。"
+        },
+        {
+          "topic": "声调",
+          "title": "选第三声",
+          "visualEmoji": "ǎ",
+          "visualText": "四声练习",
+          "prompt": "下面哪个是第三声？",
+          "options": [
+            "ā",
+            "á",
+            "ǎ",
+            "à"
+          ],
+          "answer": "ǎ",
+          "tts": "第三声先降再升，ǎ。请选择第三声。",
+          "success": "正确，ǎ 是第三声。",
+          "hint": "第三声像小山坡，先下再上。"
+        },
+        {
+          "topic": "两拼音节",
+          "title": "m 和 a",
+          "visualEmoji": "🐴",
+          "visualText": "m + a = ma",
+          "prompt": "m 和 a 拼在一起读什么？",
+          "options": [
+            "ma",
+            "mi",
+            "mo",
+            "mu"
+          ],
+          "answer": "ma",
+          "tts": "m，a，ma。请选出正确拼读。",
+          "success": "对，m 加 a 读 ma。",
+          "hint": "先读 m，再连 a。"
+        },
+        {
+          "topic": "三拼音节",
+          "title": "guā 的中间音",
+          "visualEmoji": "🍉",
+          "visualText": "g-u-a",
+          "prompt": "guā 是由 g、u 和哪个韵母拼成？",
+          "options": [
+            "a",
+            "o",
+            "e",
+            "i"
+          ],
+          "answer": "a",
+          "tts": "guā 可以拆成 g，u，a。",
+          "success": "很好，guā 里有 a。",
+          "hint": "试着慢慢读，g，u，a。"
+        },
+        {
+          "topic": "发音辨析",
+          "title": "区分 zh 和 z",
+          "visualEmoji": "🦷",
+          "visualText": "舌尖翘起来",
+          "prompt": "哪个声母需要翘舌？",
+          "options": [
+            "zh",
+            "z",
+            "c",
+            "s"
+          ],
+          "answer": "zh",
+          "tts": "zh 是翘舌音，发音时舌尖要翘起来。",
+          "success": "答对了，zh 是翘舌音。",
+          "hint": "zh、ch、sh、r 都是常见翘舌音。"
+        },
+        {
+          "topic": "整体认读",
+          "title": "yi wu yu",
+          "visualEmoji": "🧒",
+          "visualText": "直接读",
+          "prompt": "下面哪个整体认读音节读作 yi？",
+          "options": [
+            "yi",
+            "ya",
+            "mi",
+            "li"
+          ],
+          "answer": "yi",
+          "tts": "yi 是整体认读音节，直接读。",
+          "success": "正确，yi 直接读。",
+          "hint": "整体认读不要拆开拼。"
+        },
+        {
+          "topic": "韵母",
+          "title": "复韵母 ai",
+          "visualEmoji": "❤️",
+          "visualText": "a + i",
+          "prompt": "下面哪个是复韵母？",
+          "options": [
+            "ai",
+            "b",
+            "m",
+            "zh"
+          ],
+          "answer": "ai",
+          "tts": "ai 是由 a 和 i 组成的复韵母。",
+          "success": "答对了，ai 是复韵母。",
+          "hint": "复韵母通常由两个或多个元音组成。"
+        },
+        {
+          "topic": "轻声",
+          "title": "妈妈的第二个妈",
+          "visualEmoji": "👩",
+          "visualText": "mā ma",
+          "prompt": "“妈妈”第二个“妈”常读什么？",
+          "options": [
+            "轻声",
+            "第一声",
+            "第三声",
+            "第四声"
+          ],
+          "answer": "轻声",
+          "tts": "妈妈的第二个妈常常读轻声。",
+          "success": "对，第二个妈读得轻一些。",
+          "hint": "轻声读得短而轻。"
+        },
+        {
+          "topic": "拼读练习",
+          "title": "q 和 i",
+          "visualEmoji": "🚩",
+          "visualText": "q + i = qi",
+          "prompt": "q 和 i 拼在一起读什么？",
+          "options": [
+            "qi",
+            "xi",
+            "ji",
+            "chi"
+          ],
+          "answer": "qi",
+          "tts": "q，i，qi。请选择正确拼读。",
+          "success": "正确，q 加 i 读 qi。",
+          "hint": "q 和 i 在一起，读 qi。"
         }
       ]
     },
@@ -124,8 +456,17 @@
       "name": "数学基础",
       "icon": "icon-math.jpg",
       "color": "#4d9cff",
-      "description": "包含数字认知、数量比较、加减法入门、图形认知、规律排序等内容，通过生活化场景和小游戏帮助孩子建立数感。",
-      "topics": ["数字认知", "数量比较", "加减法", "图形认知", "规律排序"],
+      "description": "覆盖小学低年级数与运算、图形、比较、规律和生活应用题，帮助孩子建立数感。",
+      "topics": [
+        "数字认知",
+        "数量比较",
+        "加减法",
+        "进位退位",
+        "图形",
+        "规律",
+        "时间",
+        "应用题"
+      ],
       "questions": [
         {
           "topic": "数字认知",
@@ -133,7 +474,12 @@
           "visualEmoji": "🍎🍎🍎",
           "visualText": "有几个苹果？",
           "prompt": "图里一共有几个苹果？",
-          "options": ["2", "3", "4", "5"],
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
           "answer": "3",
           "tts": "请数一数，图里一共有几个苹果？",
           "success": "答对了，一共有三个苹果。",
@@ -145,7 +491,12 @@
           "visualEmoji": "🐟🐟🐟  🐟",
           "visualText": "比较数量",
           "prompt": "哪一边的小鱼更多？",
-          "options": ["左边", "右边", "一样多", "不知道"],
+          "options": [
+            "左边",
+            "右边",
+            "一样多",
+            "不知道"
+          ],
           "answer": "左边",
           "tts": "左边有三条小鱼，右边有一条小鱼。哪边更多？",
           "success": "正确，左边更多。",
@@ -157,7 +508,12 @@
           "visualEmoji": "🍓🍓 + 🍓",
           "visualText": "2 + 1 = ?",
           "prompt": "两个草莓再加一个草莓，一共有几个？",
-          "options": ["2", "3", "4", "5"],
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
           "answer": "3",
           "tts": "两个草莓，再加一个草莓，一共有几个？",
           "success": "对了，二加一等于三。",
@@ -169,11 +525,152 @@
           "visualEmoji": "🔺",
           "visualText": "三条边，三个角",
           "prompt": "这个图形叫什么？",
-          "options": ["三角形", "圆形", "正方形", "长方形"],
+          "options": [
+            "三角形",
+            "圆形",
+            "正方形",
+            "长方形"
+          ],
           "answer": "三角形",
           "tts": "它有三条边，三个角。这个图形叫什么？",
           "success": "正确，这是三角形。",
           "hint": "三条边的图形叫三角形。"
+        },
+        {
+          "topic": "数位",
+          "title": "十位和个位",
+          "visualEmoji": "🔟➕3",
+          "visualText": "13",
+          "prompt": "13 里面有几个十？",
+          "options": [
+            "1个十",
+            "3个十",
+            "13个十",
+            "0个十"
+          ],
+          "answer": "1个十",
+          "tts": "13 是由一个十和三个一组成的。",
+          "success": "很好，13 里面有一个十。",
+          "hint": "十几的十位通常表示一个十。"
+        },
+        {
+          "topic": "退位减法",
+          "title": "12 减 5",
+          "visualEmoji": "🧮",
+          "visualText": "12 - 5 = ?",
+          "prompt": "12 - 5 等于几？",
+          "options": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "answer": "7",
+          "tts": "12 减 5 等于 7。",
+          "success": "答对了，12 减 5 等于 7。",
+          "hint": "可以先用 10 减 5，再加上 2。"
+        },
+        {
+          "topic": "规律排序",
+          "title": "数字规律",
+          "visualEmoji": "2 4 6 ?",
+          "visualText": "双数往后数",
+          "prompt": "2、4、6 后面应该是几？",
+          "options": [
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          "answer": "8",
+          "tts": "2，4，6，都是每次加二，后面是 8。",
+          "success": "正确，后面是 8。",
+          "hint": "每次都多 2。"
+        },
+        {
+          "topic": "时间",
+          "title": "认识整点",
+          "visualEmoji": "🕒",
+          "visualText": "三点钟",
+          "prompt": "钟面上短针指向 3，长针指向 12，是几点？",
+          "options": [
+            "3点",
+            "12点",
+            "6点",
+            "9点"
+          ],
+          "answer": "3点",
+          "tts": "短针指向 3，长针指向 12，是 3 点。",
+          "success": "正确，是 3 点。",
+          "hint": "长针指 12 时，看短针指向几。"
+        },
+        {
+          "topic": "应用题",
+          "title": "还剩几个",
+          "visualEmoji": "🍪🍪🍪🍪",
+          "visualText": "吃掉 1 个",
+          "prompt": "有4块饼干，吃掉1块，还剩几块？",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "answer": "3",
+          "tts": "4 块饼干吃掉 1 块，还剩 3 块。",
+          "success": "答对了，还剩 3 块。",
+          "hint": "吃掉就是减少，用减法。"
+        },
+        {
+          "topic": "比较大小",
+          "title": "比较 9 和 6",
+          "visualEmoji": "9 > 6",
+          "visualText": "谁更大？",
+          "prompt": "9 和 6 哪个数更大？",
+          "options": [
+            "9",
+            "6",
+            "一样大",
+            "都小"
+          ],
+          "answer": "9",
+          "tts": "9 比 6 大。",
+          "success": "正确，9 更大。",
+          "hint": "数数时越往后通常越大。"
+        },
+        {
+          "topic": "图形组合",
+          "title": "两个三角形",
+          "visualEmoji": "🔺🔺",
+          "visualText": "拼一拼",
+          "prompt": "两个一样的三角形可以拼成什么？",
+          "options": [
+            "正方形",
+            "圆形",
+            "星星",
+            "月亮"
+          ],
+          "answer": "正方形",
+          "tts": "两个一样的三角形可以拼成一个正方形。",
+          "success": "很好，可以拼成正方形。",
+          "hint": "想一想把两个三角形边对边靠在一起。"
+        },
+        {
+          "topic": "人民币初步",
+          "title": "一元硬币",
+          "visualEmoji": "🪙",
+          "visualText": "买铅笔",
+          "prompt": "买1元的铅笔，应该付哪一个？",
+          "options": [
+            "1元",
+            "5角",
+            "1角",
+            "10元"
+          ],
+          "answer": "1元",
+          "tts": "买一元的东西，可以付一元。",
+          "success": "正确，付 1 元。",
+          "hint": "价格是 1 元，就找 1 元。"
         }
       ]
     },
@@ -182,8 +679,17 @@
       "name": "逻辑思维",
       "icon": "icon-logic.jpg",
       "color": "#a855f7",
-      "description": "设计找规律、分类、空间想象、图形推理、迷宫路径等训练，提升孩子观察、判断和解决问题的能力。",
-      "topics": ["找规律", "分类", "空间想象", "图形推理", "迷宫路径"],
+      "description": "通过分类、规律、空间、图形推理和路径规划训练观察、判断与解决问题能力。",
+      "topics": [
+        "找规律",
+        "分类",
+        "空间想象",
+        "图形推理",
+        "迷宫路径",
+        "排序",
+        "对应",
+        "条件判断"
+      ],
       "questions": [
         {
           "topic": "找规律",
@@ -191,7 +697,12 @@
           "visualEmoji": "🔴🔵🔴🔵🔴",
           "visualText": "下一个是什么？",
           "prompt": "红、蓝、红、蓝、红，接下来应该是什么颜色？",
-          "options": ["蓝", "红", "黄", "绿"],
+          "options": [
+            "蓝",
+            "红",
+            "黄",
+            "绿"
+          ],
           "answer": "蓝",
           "tts": "请观察规律，红，蓝，红，蓝，红，下一个是什么？",
           "success": "答对了，红蓝交替，接下来是蓝。",
@@ -203,7 +714,12 @@
           "visualEmoji": "🍎🍌🚗🍇",
           "visualText": "哪些是水果？",
           "prompt": "下面哪个不是水果？",
-          "options": ["苹果", "香蕉", "汽车", "葡萄"],
+          "options": [
+            "苹果",
+            "香蕉",
+            "汽车",
+            "葡萄"
+          ],
           "answer": "汽车",
           "tts": "苹果、香蕉、葡萄是水果。哪个不是水果？",
           "success": "正确，汽车不是水果。",
@@ -215,7 +731,12 @@
           "visualEmoji": "🟦⬆️🟨",
           "visualText": "看位置",
           "prompt": "蓝色积木在黄色积木的哪里？",
-          "options": ["上面", "下面", "里面", "后面"],
+          "options": [
+            "上面",
+            "下面",
+            "里面",
+            "后面"
+          ],
           "answer": "上面",
           "tts": "请看位置，蓝色积木在黄色积木的哪里？",
           "success": "对了，蓝色积木在上面。",
@@ -227,11 +748,152 @@
           "visualEmoji": "🐰➡️🏠",
           "visualText": "帮小兔找路",
           "prompt": "小兔要回家，应该往哪里走？",
-          "options": ["往右", "往左", "往下", "停下"],
+          "options": [
+            "往右",
+            "往左",
+            "往下",
+            "停下"
+          ],
           "answer": "往右",
           "tts": "小兔的家在右边，小兔应该往哪里走？",
           "success": "很好，小兔往右走就能回家。",
           "hint": "房子在右边，所以要往右走。"
+        },
+        {
+          "topic": "排序",
+          "title": "从小到大",
+          "visualEmoji": "1 3 2",
+          "visualText": "排顺序",
+          "prompt": "把 1、3、2 从小到大排列，正确的是？",
+          "options": [
+            "1、2、3",
+            "3、2、1",
+            "2、1、3",
+            "1、3、2"
+          ],
+          "answer": "1、2、3",
+          "tts": "从小到大是 1，2，3。",
+          "success": "正确，顺序是 1、2、3。",
+          "hint": "先找最小的 1，再找 2，最后是 3。"
+        },
+        {
+          "topic": "对应",
+          "title": "动物和家",
+          "visualEmoji": "🐟🌊",
+          "visualText": "鱼儿住哪里？",
+          "prompt": "小鱼应该和哪个地方配对？",
+          "options": [
+            "水里",
+            "树上",
+            "天空",
+            "沙发"
+          ],
+          "answer": "水里",
+          "tts": "小鱼生活在水里。",
+          "success": "对，小鱼和水里配对。",
+          "hint": "想一想小鱼在哪里游。"
+        },
+        {
+          "topic": "图形推理",
+          "title": "缺少的图形",
+          "visualEmoji": "○ □ ○ □ ?",
+          "visualText": "圆方交替",
+          "prompt": "圆形、方形、圆形、方形，后面是什么？",
+          "options": [
+            "圆形",
+            "方形",
+            "三角形",
+            "星形"
+          ],
+          "answer": "圆形",
+          "tts": "圆形和方形轮流出现，后面是圆形。",
+          "success": "答对了，后面是圆形。",
+          "hint": "观察前面的顺序，是圆、方、圆、方。"
+        },
+        {
+          "topic": "条件判断",
+          "title": "谁最高",
+          "visualEmoji": "🐭🐶🦒",
+          "visualText": "长颈鹿最高",
+          "prompt": "老鼠、小狗、长颈鹿中谁最高？",
+          "options": [
+            "长颈鹿",
+            "小狗",
+            "老鼠",
+            "一样高"
+          ],
+          "answer": "长颈鹿",
+          "tts": "长颈鹿有长长的脖子，是最高的。",
+          "success": "正确，长颈鹿最高。",
+          "hint": "想一想哪个动物脖子最长。"
+        },
+        {
+          "topic": "观察力",
+          "title": "找不同",
+          "visualEmoji": "🍎🍎🍐🍎",
+          "visualText": "找不一样",
+          "prompt": "哪一个和其他不一样？",
+          "options": [
+            "梨",
+            "苹果",
+            "红色",
+            "水果"
+          ],
+          "answer": "梨",
+          "tts": "三个是苹果，一个是梨。哪个不一样？",
+          "success": "很好，梨和苹果不一样。",
+          "hint": "看形状和颜色，梨不一样。"
+        },
+        {
+          "topic": "空间方向",
+          "title": "左和右",
+          "visualEmoji": "⬅️ 🧸 ➡️",
+          "visualText": "方向判断",
+          "prompt": "箭头指向左边的是哪个？",
+          "options": [
+            "⬅️",
+            "➡️",
+            "⬆️",
+            "⬇️"
+          ],
+          "answer": "⬅️",
+          "tts": "这个箭头指向左边。",
+          "success": "正确，左箭头是这个。",
+          "hint": "左边通常在身体拿勺子的相反侧，也可以看箭头方向。"
+        },
+        {
+          "topic": "分类",
+          "title": "交通工具",
+          "visualEmoji": "🚗✈️🚢🍰",
+          "visualText": "找交通工具",
+          "prompt": "下面哪个不是交通工具？",
+          "options": [
+            "蛋糕",
+            "汽车",
+            "飞机",
+            "轮船"
+          ],
+          "answer": "蛋糕",
+          "tts": "汽车、飞机、轮船是交通工具，蛋糕不是。",
+          "success": "正确，蛋糕不是交通工具。",
+          "hint": "交通工具可以载人移动。"
+        },
+        {
+          "topic": "推理",
+          "title": "谁吃竹子",
+          "visualEmoji": "🐼🎋",
+          "visualText": "熊猫爱竹子",
+          "prompt": "最喜欢吃竹子的动物是谁？",
+          "options": [
+            "熊猫",
+            "小猫",
+            "小鸡",
+            "海豚"
+          ],
+          "answer": "熊猫",
+          "tts": "熊猫喜欢吃竹子。",
+          "success": "答对了，是熊猫。",
+          "hint": "熊猫常常抱着竹子吃。"
         }
       ]
     },
@@ -240,47 +902,207 @@
       "name": "英语启蒙",
       "icon": "icon-english.jpg",
       "color": "#27c976",
-      "description": "包含字母认知、常见单词、简单句型、自然拼读入门和听力磨耳朵内容，通过图文、音频和互动练习培养英语兴趣。",
-      "topics": ["字母认知", "常见单词", "简单句型", "自然拼读", "听力磨耳朵"],
+      "description": "按分级阅读启蒙顺序从高频名词、颜色、动作、简单句逐步扩展，词汇由简到繁。",
+      "topics": [
+        "Level AA",
+        "Level A",
+        "Level B",
+        "Level C",
+        "自然拼读",
+        "高频词",
+        "简单句",
+        "听力理解"
+      ],
       "questions": [
         {
-          "topic": "字母认知",
+          "topic": "Level AA",
           "title": "Letter A",
           "visualEmoji": "🍎",
           "visualText": "A for apple",
           "prompt": "Apple 是以哪个字母开头？",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "answer": "A",
-          "lang": "en-US",
           "tts": "A for apple. Which letter starts the word apple?",
           "success": "Great! Apple starts with A.",
-          "hint": "Listen again. A, apple."
+          "hint": "Listen again. A, apple.",
+          "lang": "en-US",
+          "level": "AA"
         },
         {
-          "topic": "常见单词",
+          "topic": "Level AA",
           "title": "颜色单词",
           "visualEmoji": "🔴",
           "visualText": "red",
           "prompt": "红色的英文是什么？",
-          "options": ["red", "blue", "green", "yellow"],
+          "options": [
+            "red",
+            "blue",
+            "green",
+            "yellow"
+          ],
           "answer": "red",
-          "lang": "en-US",
-          "tts": "Red means 红色. Which word means 红色?",
+          "tts": "Red means red color. Which word means 红色?",
           "success": "Yes, red means 红色.",
-          "hint": "The color is red. Try red."
+          "hint": "The color is red. Try red.",
+          "lang": "en-US",
+          "level": "AA"
         },
         {
-          "topic": "简单句型",
+          "topic": "Level AA",
+          "title": "动物单词",
+          "visualEmoji": "🐱",
+          "visualText": "cat",
+          "prompt": "猫的英文是什么？",
+          "options": [
+            "cat",
+            "dog",
+            "fish",
+            "bird"
+          ],
+          "answer": "cat",
+          "tts": "Cat means 猫. Which word means 猫?",
+          "success": "Good job. Cat means 猫.",
+          "hint": "Listen: cat, cat.",
+          "lang": "en-US",
+          "level": "AA"
+        },
+        {
+          "topic": "Level A",
+          "title": "I see a dog",
+          "visualEmoji": "🐶",
+          "visualText": "I see a dog.",
+          "prompt": "“我看见一只狗”是哪一句？",
+          "options": [
+            "I see a dog.",
+            "I like milk.",
+            "Go to bed.",
+            "It is red."
+          ],
+          "answer": "I see a dog.",
+          "tts": "I see a dog means 我看见一只狗.",
+          "success": "Correct. I see a dog.",
+          "hint": "See means 看见，dog means 狗。",
+          "lang": "en-US",
+          "level": "A"
+        },
+        {
+          "topic": "Level A",
+          "title": "高频词 the",
+          "visualEmoji": "📘",
+          "visualText": "the book",
+          "prompt": "the 常放在名词前，下面哪个是正确短语？",
+          "options": [
+            "the book",
+            "book the",
+            "red the",
+            "jump the"
+          ],
+          "answer": "the book",
+          "tts": "The book. The is often before a noun.",
+          "success": "Correct. The book.",
+          "hint": "the 常放在名词前面。",
+          "lang": "en-US",
+          "level": "A"
+        },
+        {
+          "topic": "Level A",
+          "title": "动作词 run",
+          "visualEmoji": "🏃",
+          "visualText": "run",
+          "prompt": "run 的意思是什么？",
+          "options": [
+            "跑",
+            "睡觉",
+            "喝水",
+            "画画"
+          ],
+          "answer": "跑",
+          "tts": "Run means 跑.",
+          "success": "Yes. Run means 跑.",
+          "hint": "Look at the child running.",
+          "lang": "en-US",
+          "level": "A"
+        },
+        {
+          "topic": "Level B",
           "title": "I like apples",
           "visualEmoji": "😊🍎",
           "visualText": "I like apples.",
           "prompt": "“我喜欢苹果”可以怎么说？",
-          "options": ["I like apples.", "I am a cat.", "Good night.", "This is blue."],
+          "options": [
+            "I like apples.",
+            "I am a cat.",
+            "Good night.",
+            "This is blue."
+          ],
           "answer": "I like apples.",
-          "lang": "en-US",
           "tts": "I like apples means 我喜欢苹果.",
           "success": "Good job! I like apples.",
-          "hint": "Like 表示喜欢，apples 是苹果。"
+          "hint": "Like 表示喜欢，apples 是苹果。",
+          "lang": "en-US",
+          "level": "B"
+        },
+        {
+          "topic": "Level B",
+          "title": "big and small",
+          "visualEmoji": "🐘🐭",
+          "visualText": "big / small",
+          "prompt": "small 的意思是什么？",
+          "options": [
+            "小的",
+            "大的",
+            "红的",
+            "快的"
+          ],
+          "answer": "小的",
+          "tts": "Small means 小的.",
+          "success": "Correct. Small means 小的.",
+          "hint": "The mouse is small.",
+          "lang": "en-US",
+          "level": "B"
+        },
+        {
+          "topic": "Level B",
+          "title": "Where is it?",
+          "visualEmoji": "📦",
+          "visualText": "in the box",
+          "prompt": "in the box 的意思是什么？",
+          "options": [
+            "在盒子里",
+            "在天上",
+            "在水里",
+            "在门外"
+          ],
+          "answer": "在盒子里",
+          "tts": "In the box means 在盒子里.",
+          "success": "Correct. In the box.",
+          "hint": "in 表示在里面。",
+          "lang": "en-US",
+          "level": "B"
+        },
+        {
+          "topic": "Level C",
+          "title": "She can jump",
+          "visualEmoji": "👧⬆️",
+          "visualText": "She can jump.",
+          "prompt": "can 在句子里表示什么？",
+          "options": [
+            "能、会",
+            "颜色",
+            "数字",
+            "水果"
+          ],
+          "answer": "能、会",
+          "tts": "Can means 能 or 会. She can jump.",
+          "success": "Correct. Can means 能、会。",
+          "hint": "can 后面常接动作。",
+          "lang": "en-US",
+          "level": "C"
         },
         {
           "topic": "自然拼读",
@@ -288,12 +1110,37 @@
           "visualEmoji": "⚽",
           "visualText": "b - ball",
           "prompt": "ball 的开头发音接近哪个字母？",
-          "options": ["b", "m", "s", "t"],
+          "options": [
+            "b",
+            "m",
+            "s",
+            "t"
+          ],
           "answer": "b",
-          "lang": "en-US",
           "tts": "B says buh, ball. Which letter starts ball?",
           "success": "Correct. Ball starts with b.",
-          "hint": "Ball, ball, begins with b."
+          "hint": "Ball, ball, begins with b.",
+          "lang": "en-US",
+          "level": "Phonics"
+        },
+        {
+          "topic": "Level C",
+          "title": "简单阅读",
+          "visualEmoji": "🐸🌧️",
+          "visualText": "The frog jumps.",
+          "prompt": "The frog jumps. 这句话里的 frog 是什么？",
+          "options": [
+            "青蛙",
+            "小狗",
+            "苹果",
+            "书"
+          ],
+          "answer": "青蛙",
+          "tts": "The frog jumps. Frog means 青蛙.",
+          "success": "Yes. Frog means 青蛙.",
+          "hint": "Look at the green animal. It is a frog.",
+          "lang": "en-US",
+          "level": "C"
         }
       ]
     },
@@ -302,8 +1149,17 @@
       "name": "表达与阅读",
       "icon": "icon-science.jpg",
       "color": "#ff9f43",
-      "description": "提供绘本故事、看图讲述、情景问答和简单复述任务，帮助孩子提升语言表达和阅读理解能力。",
-      "topics": ["绘本故事", "看图讲述", "情景问答", "简单复述"],
+      "description": "以绘本故事、情景问答、复述和阅读理解为核心，训练孩子听、说、读和完整表达。",
+      "topics": [
+        "绘本故事",
+        "看图讲述",
+        "情景问答",
+        "简单复述",
+        "人物",
+        "地点",
+        "原因",
+        "顺序"
+      ],
       "questions": [
         {
           "topic": "绘本故事",
@@ -311,7 +1167,12 @@
           "visualEmoji": "🐻🤝🐰",
           "visualText": "小熊遇见小兔",
           "prompt": "小熊遇见小兔时，应该先说什么？",
-          "options": ["你好", "再见", "不要", "下雨"],
+          "options": [
+            "你好",
+            "再见",
+            "不要",
+            "下雨"
+          ],
           "answer": "你好",
           "tts": "小熊遇见小兔，应该先有礼貌地打招呼。",
           "success": "对了，见到朋友可以说你好。",
@@ -323,7 +1184,12 @@
           "visualEmoji": "👦🛝🌳",
           "visualText": "小朋友在公园玩",
           "prompt": "哪句话能讲清楚图片？",
-          "options": ["小朋友在公园玩", "小鱼在天上飞", "月亮吃苹果", "书包在跑步"],
+          "options": [
+            "小朋友在公园玩",
+            "小鱼在天上飞",
+            "月亮吃苹果",
+            "书包在跑步"
+          ],
           "answer": "小朋友在公园玩",
           "tts": "请看图片，小朋友在哪里？他在做什么？",
           "success": "很好，这句话讲清楚了地点和事情。",
@@ -335,7 +1201,12 @@
           "visualEmoji": "🥤",
           "visualText": "我想喝水",
           "prompt": "如果你想喝水，可以怎么说？",
-          "options": ["我想喝水", "我会飞", "这是大象", "天黑了"],
+          "options": [
+            "我想喝水",
+            "我会飞",
+            "这是大象",
+            "天黑了"
+          ],
           "answer": "我想喝水",
           "tts": "如果想喝水，可以清楚地说，我想喝水。",
           "success": "表达得很清楚。",
@@ -347,11 +1218,152 @@
           "visualEmoji": "🌧️🐸☀️",
           "visualText": "下雨后，青蛙出来了",
           "prompt": "下面哪句话最像故事复述？",
-          "options": ["下雨后，青蛙出来唱歌", "苹果是红色", "我有三支笔", "小车很快"],
+          "options": [
+            "下雨后，青蛙出来唱歌",
+            "苹果是红色",
+            "我有三支笔",
+            "小车很快"
+          ],
           "answer": "下雨后，青蛙出来唱歌",
           "tts": "请把故事主要内容说出来：下雨后，青蛙出来了。",
           "success": "复述得不错，说出了时间和事情。",
           "hint": "复述要说出故事里发生了什么。"
+        },
+        {
+          "topic": "人物",
+          "title": "故事里的谁",
+          "visualEmoji": "👵🍪",
+          "visualText": "奶奶做饼干",
+          "prompt": "故事里做饼干的人是谁？",
+          "options": [
+            "奶奶",
+            "小鱼",
+            "小鸟",
+            "机器人"
+          ],
+          "answer": "奶奶",
+          "tts": "奶奶做了香香的饼干。是谁做饼干？",
+          "success": "正确，是奶奶。",
+          "hint": "题目里说奶奶做了饼干。"
+        },
+        {
+          "topic": "地点",
+          "title": "小猴在哪里",
+          "visualEmoji": "🐒🌳",
+          "visualText": "小猴在树上",
+          "prompt": "小猴在哪里？",
+          "options": [
+            "树上",
+            "水里",
+            "床下",
+            "盒子里"
+          ],
+          "answer": "树上",
+          "tts": "小猴爬到树上摘香蕉。小猴在哪里？",
+          "success": "对，小猴在树上。",
+          "hint": "猴子会爬树，看看图里的树。"
+        },
+        {
+          "topic": "原因",
+          "title": "为什么带伞",
+          "visualEmoji": "☔🌧️",
+          "visualText": "下雨了",
+          "prompt": "小明为什么带伞？",
+          "options": [
+            "因为下雨了",
+            "因为很热",
+            "因为要睡觉",
+            "因为要画画"
+          ],
+          "answer": "因为下雨了",
+          "tts": "下雨了，小明带上雨伞。为什么带伞？",
+          "success": "答对了，因为下雨了。",
+          "hint": "伞常常在下雨时使用。"
+        },
+        {
+          "topic": "顺序",
+          "title": "先后顺序",
+          "visualEmoji": "🪥😴",
+          "visualText": "刷牙后睡觉",
+          "prompt": "睡觉前通常先做什么？",
+          "options": [
+            "刷牙",
+            "吃糖",
+            "跑步",
+            "看太阳"
+          ],
+          "answer": "刷牙",
+          "tts": "睡觉前要刷牙，保护牙齿。",
+          "success": "很好，睡前要刷牙。",
+          "hint": "晚上睡觉前，先把牙齿刷干净。"
+        },
+        {
+          "topic": "阅读理解",
+          "title": "小猫钓鱼",
+          "visualEmoji": "🐱🎣",
+          "visualText": "小猫在河边",
+          "prompt": "小猫在河边做什么？",
+          "options": [
+            "钓鱼",
+            "写字",
+            "开车",
+            "唱歌"
+          ],
+          "answer": "钓鱼",
+          "tts": "小猫坐在河边钓鱼。小猫在做什么？",
+          "success": "正确，小猫在钓鱼。",
+          "hint": "鱼竿说明它在钓鱼。"
+        },
+        {
+          "topic": "情景表达",
+          "title": "借东西",
+          "visualEmoji": "✏️",
+          "visualText": "借一支铅笔",
+          "prompt": "想借铅笔时，哪句话更有礼貌？",
+          "options": [
+            "请借我一支铅笔，好吗？",
+            "给我！",
+            "不要说话",
+            "我不喜欢"
+          ],
+          "answer": "请借我一支铅笔，好吗？",
+          "tts": "借东西时可以说，请借我一支铅笔，好吗？",
+          "success": "很有礼貌。",
+          "hint": "有礼貌的话通常会说请。"
+        },
+        {
+          "topic": "复述",
+          "title": "三个关键点",
+          "visualEmoji": "👦🏫📚",
+          "visualText": "小明去学校读书",
+          "prompt": "复述时最好说清楚什么？",
+          "options": [
+            "谁、在哪里、做什么",
+            "只说颜色",
+            "只说数字",
+            "只说一个字"
+          ],
+          "answer": "谁、在哪里、做什么",
+          "tts": "复述故事时，要说清楚谁、在哪里、做什么。",
+          "success": "答对了，这样复述更完整。",
+          "hint": "完整表达需要说清人物、地点和事情。"
+        },
+        {
+          "topic": "阅读判断",
+          "title": "判断对错",
+          "visualEmoji": "🐟🌊",
+          "visualText": "鱼在水里游",
+          "prompt": "“小鱼在天空飞。”这句话合理吗？",
+          "options": [
+            "不合理",
+            "合理",
+            "一定正确",
+            "和图片一样"
+          ],
+          "answer": "不合理",
+          "tts": "小鱼通常在水里游，不在天空飞。",
+          "success": "正确，这句话不合理。",
+          "hint": "想一想小鱼生活在哪里。"
         }
       ]
     }

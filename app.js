@@ -22,7 +22,8 @@ var progress = {
   wrong: 0,
   studyTime: 0,
   answered: {},
-  exchangeLog: []
+  exchangeLog: [],
+  wrongBank: []
 };
 
 var moduleIconMap = {
@@ -80,6 +81,10 @@ function bindElements() {
   el.parentSummary = $('parent-summary');
   el.exchangeMessage = $('exchange-message');
   el.exchangeLog = $('exchange-log');
+  el.customReward = $('custom-reward');
+  el.customCost = $('custom-cost');
+  el.customExchangeBtn = $('custom-exchange-btn');
+  el.wrongBank = $('wrong-bank');
 }
 
 function readProgress() {
@@ -93,6 +98,7 @@ function readProgress() {
     progress.studyTime = saved.studyTime || 0;
     progress.answered = saved.answered || {};
     progress.exchangeLog = Array.isArray(saved.exchangeLog) ? saved.exchangeLog : [];
+    progress.wrongBank = Array.isArray(saved.wrongBank) ? saved.wrongBank : [];
   } catch (error) {
     console.warn('读取进度失败：', error);
   }
@@ -113,6 +119,7 @@ function updateParentStats() {
   if (el.progressTime) el.progressTime.textContent = formatTime(progress.studyTime);
   updateAchievementRing();
   renderExchangeLog();
+  renderWrongBank();
   if (el.parentSummary) {
     if (progress.correct + progress.wrong === 0) {
       el.parentSummary.textContent = '还没有答题记录，先从孩子感兴趣的板块开始。';
@@ -151,6 +158,32 @@ function renderExchangeLog() {
     li.textContent = item.time + ' 兑换「' + item.reward + '」，消耗 ' + item.cost + ' 颗星';
     el.exchangeLog.appendChild(li);
   });
+}
+
+function renderWrongBank() {
+  if (!el.wrongBank) return;
+  el.wrongBank.innerHTML = '';
+  if (!progress.wrongBank || progress.wrongBank.length === 0) {
+    var empty = document.createElement('li');
+    empty.textContent = '暂无错题记录';
+    el.wrongBank.appendChild(empty);
+    return;
+  }
+  progress.wrongBank.slice().reverse().slice(0, 12).forEach(function(item) {
+    var li = document.createElement('li');
+    li.innerHTML = '<strong>' + escapeHtml(item.moduleName || '学习板块') + '：' + escapeHtml(item.title || item.prompt || '错题') + '</strong>' +
+      '<span>答错选项：' + escapeHtml(item.selected || '未记录') + '；正确答案：' + escapeHtml(item.answer || '未记录') + '</span>';
+    el.wrongBank.appendChild(li);
+  });
+}
+
+function escapeHtml(text) {
+  return String(text || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 function formatTime(seconds) {
@@ -389,6 +422,7 @@ function chooseAnswer(button, option, question) {
     button.classList.add('wrong');
     showFeedback(false, question.hint || '再观察一下，重新选择。');
     progress.wrong += 1;
+    addWrongQuestion(question, option);
     saveProgress();
     updateParentStats();
     speak(question.hint || '答错了，请再试一次。', question.lang || 'zh-CN');
@@ -422,6 +456,32 @@ function markCorrect() {
   updateParentStats();
 }
 
+function addWrongQuestion(question, selected) {
+  var module = getCurrentModule();
+  var key = answerKey();
+  var record = {
+    key: key,
+    moduleId: module ? module.id : '',
+    moduleName: module ? module.name : '',
+    title: question.title || '',
+    prompt: question.prompt || '',
+    selected: selected,
+    answer: question.answer || '',
+    hint: question.hint || '',
+    time: formatDateTime(new Date())
+  };
+  var list = Array.isArray(progress.wrongBank) ? progress.wrongBank : [];
+  var existingIndex = list.findIndex(function(item) {
+    return item.key === key;
+  });
+  if (existingIndex >= 0) {
+    list.splice(existingIndex, 1, record);
+  } else {
+    list.push(record);
+  }
+  progress.wrongBank = list.slice(-50);
+}
+
 function clearAutoNext() {
   if (autoNextTimer) {
     window.clearTimeout(autoNextTimer);
@@ -431,11 +491,24 @@ function clearAutoNext() {
 
 function nextQuestion() {
   clearAutoNext();
+  var modules = getModules();
   var module = getCurrentModule();
   var questions = getQuestions(module);
   if (!questions.length) return;
-  currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
-  renderQuestion();
+  if (currentQuestionIndex < questions.length - 1) {
+    currentQuestionIndex += 1;
+    renderQuestion();
+    return;
+  }
+  if (currentModuleIndex < modules.length - 1) {
+    currentModuleIndex += 1;
+    currentQuestionIndex = 0;
+    renderApp();
+    var nextModule = getCurrentModule();
+    if (nextModule) speak('进入' + nextModule.name + '，继续后续学习。', 'zh-CN');
+    return;
+  }
+  showFeedback(true, '全部内容已经学完，可以回到任意板块继续复习。');
 }
 
 function prevQuestion() {
@@ -520,6 +593,10 @@ function bindEvents() {
       redeemReward(button);
     });
   });
+
+  if (el.customExchangeBtn) {
+    el.customExchangeBtn.addEventListener('click', redeemCustomReward);
+  }
 }
 
 function initIntroCard() {
@@ -545,8 +622,51 @@ function closeParentModal() {
 }
 
 function redeemReward(button) {
-  var cost = Number(button.getAttribute('data-cost') || 0);
   var reward = button.getAttribute('data-reward') || '星星奖励';
+  var cost = getRewardCost(button, reward);
+  if (!cost) return;
+  completeRewardExchange(reward, cost);
+}
+
+function redeemCustomReward() {
+  var reward = el.customReward ? el.customReward.value.trim() : '';
+  var cost = el.customCost ? Number(el.customCost.value) : 0;
+  if (!reward) {
+    if (el.exchangeMessage) {
+      el.exchangeMessage.textContent = '请先输入想兑换的项目名称。';
+      el.exchangeMessage.className = 'exchange-message warn';
+    }
+    return;
+  }
+  if (!Number.isInteger(cost) || cost <= 0) {
+    if (el.exchangeMessage) {
+      el.exchangeMessage.textContent = '请输入大于 0 的星星数。';
+      el.exchangeMessage.className = 'exchange-message warn';
+    }
+    return;
+  }
+  completeRewardExchange(reward, cost);
+  if (el.customReward) el.customReward.value = '';
+  if (el.customCost) el.customCost.value = '';
+}
+
+function getRewardCost(button, reward) {
+  var presetCost = Number(button.getAttribute('data-cost') || 0);
+  if (Number.isInteger(presetCost) && presetCost > 0) return presetCost;
+  var input = window.prompt('请输入兑换「' + reward + '」要消耗的星星数：', '1');
+  if (input === null) return 0;
+  var cost = Number(input);
+  if (!Number.isInteger(cost) || cost <= 0) {
+    if (el.exchangeMessage) {
+      el.exchangeMessage.textContent = '请输入大于 0 的整数星星数。';
+      el.exchangeMessage.className = 'exchange-message warn';
+    }
+    return 0;
+  }
+  return cost;
+}
+
+function completeRewardExchange(reward, cost) {
   if (progress.stars < cost) {
     if (el.exchangeMessage) {
       el.exchangeMessage.textContent = '星星还不够，继续学习再来兑换吧。';
